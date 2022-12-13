@@ -46,7 +46,7 @@ public class TcpServer {
 				//clientMsg += "Content-Type: text/plain\r\n";
 				clientMsg += "\r\n";
 				clientMsg += "Nicolas Cicoira";
-				outStream.write(clientMsg.getBytes());
+				outStream.write(clientMsg.getBytes()); 
 				outStream.flush();
 
 				System.out.println("\n....................... Fine ricezione dati\n");

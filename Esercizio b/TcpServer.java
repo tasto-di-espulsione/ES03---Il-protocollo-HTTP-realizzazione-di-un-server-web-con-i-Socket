@@ -34,9 +34,14 @@ public class TcpServer {
 	
 				// ---------------------------------------------------------
 				//Lettura dati dal client un righa alla volta   
-				while ((clientMsg=inStream.readLine()).length() != 0) {
-					System.out.println(clientMsg);	
-				}  
+				clientMsg=inStream.readLine();
+				System.out.println(clientMsg);	
+				String replace = (clientMsg.replace("GET /", "")).replace(" HTTP/1.1", "");
+				System.out.println(replace);
+
+
+				
+
 				// Elaborare qui i dati ricevuti dal client 
 				// ---------------------------------------------------------
 
@@ -45,7 +50,10 @@ public class TcpServer {
 				//clientMsg += "Connection: close\r\n";
 				//clientMsg += "Content-Type: text/plain\r\n";
 				clientMsg += "\r\n";
-				clientMsg += "Nicolas Cicoira";
+				if(replace=="accendi")
+					clientMsg += "accendi la luce";
+				else if(replace=="spegni")
+					clientMsg += "spegni la luce";
 				outStream.write(clientMsg.getBytes());
 				outStream.flush();
 
