@@ -32,19 +32,9 @@ public class TcpServer {
 				// Create output stream to write data and input stream to read data from socket
 				DataOutputStream outStream = new DataOutputStream(clientSocket.getOutputStream());	
 				BufferedReader inStream = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
-	
+				replace = "comando non riconosciuto";
 				// ---------------------------------------------------------
 				//Lettura dati dal client un righa alla volta   
-				/*
-				while ((clientMsg=inStream.readLine()).contains("accendi")) {
-					System.out.println(clientMsg);
-					replace = (clientMsg.replace("GET /", "")).replace(" HTTP/1.1", "");
-					
-					System.out.println("-"+replace+"-");	
-					System.out.println("-"+replace+"-");	
-				}	
-				System.out.println("-"+replace+"-");	
-				*/
 				while ((clientMsg=inStream.readLine()).length() != 0) {
 					
 					if(clientMsg.contains("accendi"))
